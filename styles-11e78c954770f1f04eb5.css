@@ -19,8 +19,19 @@
 
 .app-container input {
   padding: 5px;
-  display: flex;
   margin: 15px 0; }
+
+.input-container {
+  display: block;
+  margin-bottom: 10px; }
+
+.app-container input {
+  padding: 5px;
+  margin: 10px; }
+
+.info {
+  font-size: 12px;
+  margin-left: 5px; }
 
 .app-container button {
   border-radius: 5px;
@@ -48,8 +59,19 @@
 
 .app-container input {
   padding: 5px;
-  display: flex;
   margin: 15px 0; }
+
+.input-container {
+  display: block;
+  margin-bottom: 10px; }
+
+.app-container input {
+  padding: 5px;
+  margin: 10px; }
+
+.info {
+  font-size: 12px;
+  margin-left: 5px; }
 
 .app-container button {
   border-radius: 5px;
@@ -85,8 +107,7 @@ h1 {
 .app-container {
   background-color: #f0f0f0;
   padding: 20px;
-  text-align: center;
-  font-family: Arial, sans-serif; }
+  text-align: center; }
 
 .app-title {
   color: #333;
