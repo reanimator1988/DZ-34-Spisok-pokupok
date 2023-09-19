@@ -11,9 +11,8 @@ const ShoppingList = ({ shoppingList, addShoppingItem, editShoppingItem, deleteS
 
     const handleCaptionChange = (e) => {
         const inputValue = e.target.value;
-        if (!/^\d+$/.test(inputValue)) {
-            setCaption(inputValue);
-        }
+        const lettersOnlyValue = inputValue.replace(/\d/g, '');
+        setCaption(lettersOnlyValue);
     };
 
     const handleAddItem = () => {
@@ -34,7 +33,6 @@ const ShoppingList = ({ shoppingList, addShoppingItem, editShoppingItem, deleteS
         }
     };
 
-
     return (
         <div>
             <div className="input-container">
@@ -46,16 +44,16 @@ const ShoppingList = ({ shoppingList, addShoppingItem, editShoppingItem, deleteS
                     autoComplete="off"
                 />
 
-                    <div className='input-container-team'>
-                        <input
-                            type="text"
-                            value={amount}
-                            onChange={handleAmountChange}
-                            placeholder="Кількість"
-                        />
-                        <p className="info">(макс. 1000 од.)</p>
-                    </div>
-             
+                <div className='input-container-team'>
+                    <input
+                        type="text"
+                        value={amount}
+                        onChange={handleAmountChange}
+                        placeholder="Кількість"
+                    />
+                    <p className="info">(макс. 1000 од.)</p>
+                </div>
+
 
                 <button onClick={handleAddItem}>Додати</button>
                 {error && <p className="error-message">{error}</p>}
