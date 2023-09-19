@@ -9,6 +9,13 @@ const ShoppingList = ({ shoppingList, addShoppingItem, editShoppingItem, deleteS
     const [amount, setAmount] = useState('');
     const [error, setError] = useState('');
 
+    const handleCaptionChange = (e) => {
+        const inputValue = e.target.value;
+        if (!/^\d+$/.test(inputValue)) {
+            setCaption(inputValue);
+        }
+    };
+
     const handleAddItem = () => {
         if (caption && !isNaN(amount) && parseInt(amount) >= 0) {
             addShoppingItem(caption, parseInt(amount));
@@ -22,26 +29,34 @@ const ShoppingList = ({ shoppingList, addShoppingItem, editShoppingItem, deleteS
 
     const handleAmountChange = (e) => {
         const inputValue = e.target.value;
-        if (/^[0-9]*$/.test(inputValue) || inputValue === '') {
+        if ((/^[0-9]*$/.test(inputValue) || inputValue === '') && inputValue <= 1001) {
             setAmount(inputValue);
         }
     };
 
+
     return (
         <div>
-            <div>
+            <div className="input-container">
                 <input
                     type="text"
                     value={caption}
-                    onChange={(e) => setCaption(e.target.value)}
+                    onChange={handleCaptionChange}
                     placeholder="Назва товару"
+                    autoComplete="off"
                 />
-                <input
-                    type="text"
-                    value={amount}
-                    onChange={handleAmountChange}
-                    placeholder="Кількість"
-                />
+
+                    <div className='input-container-team'>
+                        <input
+                            type="text"
+                            value={amount}
+                            onChange={handleAmountChange}
+                            placeholder="Кількість"
+                        />
+                        <p className="info">(макс. 1000 од.)</p>
+                    </div>
+             
+
                 <button onClick={handleAddItem}>Додати</button>
                 {error && <p className="error-message">{error}</p>}
             </div>
